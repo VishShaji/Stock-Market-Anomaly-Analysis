@@ -1,0 +1,30 @@
+name: Run Jupyter Notebook
+
+on: [push]
+
+jobs:
+  run_notebook:
+    runs-on: ubuntu-latest
+
+    env:
+      ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install jupyter
+
+      - name: Run Jupyter Notebook
+        run: |
+          jupyter nbconvert --to notebook --execute your_notebook.ipynb
+        env:
+          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
