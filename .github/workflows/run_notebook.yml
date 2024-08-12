@@ -25,6 +25,11 @@ jobs:
 
       - name: Run Jupyter Notebook
         run: |
-          jupyter nbconvert --to notebook --execute your_notebook.ipynb
-        env:
-          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
+          set -e
+          jupyter nbconvert --to notebook --execute your_notebook.ipynb --output result_notebook.ipynb
+
+      - name: Upload result notebook
+        uses: actions/upload-artifact@v3
+        with:
+          name: result-notebook
+          path: result_notebook.ipynb
