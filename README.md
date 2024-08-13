@@ -26,19 +26,25 @@ The project employs the following steps:
 - **Adjusted Close Risk**:
 
   $$
-  \text{adj\_close\_risk} = \text{anomalies\_adj\_close.groupby('Ticker')['Z-score'].apply(lambda x: abs(x).mean())}
+  \text{adj\_close\_risk} = \text{anomalies\_adj\_close.groupby('Ticker')['Z-score'].apply(\lambda x: \text{abs}(x).\text{mean}())}
   $$
 
 - **Volume Risk**:
 
   $$
-  \text{volume\_risk} = \text{anomalies\_volume.groupby('Ticker')['Z-score'].apply(lambda x: abs(x).mean())}
+  \text{volume\_risk} = \text{anomalies\_volume.groupby('Ticker')['Z-score'].apply(\lambda x: \text{abs}(x).\text{mean}())}
   $$
 
 - **Total Risk**:
 
   $$
   \text{total\_risk} = \text{adj\_close\_risk} + \text{volume\_risk}
+  $$
+
+- **Risk Rating**:
+
+  $$
+  \text{risk\_rating} = \frac{\text{total\_risk} - \text{total\_risk.min()}}{\text{total\_risk.max()} - \text{total\_risk.min()}}
   $$
 
 - **Risk Rating**:
