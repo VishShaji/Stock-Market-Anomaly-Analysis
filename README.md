@@ -1,61 +1,79 @@
-# Stock Market Anomaly Detection
+## Stock Market Anomaly Detection
 
-## Executive Summary
+### Executive Summary
 
-This project focuses on detecting anomalies in stock market data to identify unusual trading patterns that may indicate potential risks or opportunities. By leveraging various machine learning techniques, we aim to enhance decision-making processes for investors and financial analysts.
+This project focuses on detecting anomalies in stock market data using Z-scores of closing prices and trading volumes. By leveraging the Alpha Vantage API for data retrieval, we aim to identify unusual trading patterns that may indicate potential risks or opportunities for investors.
 
-## Business Problem
+### Business Problem
 
-In the volatile stock market, anomalies can signal significant events such as market manipulation, sudden price changes, or emerging trends. Identifying these anomalies in real-time can help investors make informed decisions, manage risks, and capitalize on opportunities. However, traditional analysis methods may not effectively capture these anomalies, necessitating advanced techniques.
+In the volatile stock market, anomalies can signal significant events such as market manipulation, sudden price changes, or emerging trends. Identifying these anomalies in real-time can help investors make informed decisions, manage risks, and capitalize on opportunities. Traditional analysis methods may not effectively capture these anomalies, necessitating a more straightforward statistical approach.
 
-## Methodology
+### Methodology
 
 The project employs the following steps:
 
-### Data Preprocessing
+1. **Data Retrieval**: 
+   - Use the Alpha Vantage API to obtain stock market data, including closing prices and trading volumes.
 
-- Load stock market data from a CSV file.
-- Handle missing values and scale the data.
+2. **Data Preprocessing**: 
+   - Calculate Z-scores for the closing prices and trading volumes to identify anomalies.
 
-### Exploratory Data Analysis (EDA)
+3. **Anomaly Detection**: 
+   - Identify anomalies based on the calculated Z-scores for both closing prices and volumes.
 
-- Visualize stock data trends and statistical properties.
+4. **Risk Assessment**: 
+   - Compute risk scores using the following formulas:
+     - Adjusted Close Risk: 
+       $$
+       \text{adj\_close\_risk} = \text{anomalies\_adj\_close.groupby('Ticker')['Z-score'].apply(lambda x: abs(x).mean())}
+       $$
+     - Volume Risk: 
+       $$
+       \text{volume\_risk} = \text{anomalies\_volume.groupby('Ticker')['Z-score'].apply(lambda x: abs(x).mean())}
+       $$
+     - Total Risk: 
+       $$
+       \text{total\_risk} = \text{adj\_close\_risk} + \text{volume\_risk}
+       $$
+     - Risk Rating: 
+       $$
+       \text{risk\_rating} = \frac{\text{total\_risk} - \text{total\_risk.min()}}{\text{total\_risk.max()} - \text{total\_risk.min()}}
+       $$
 
-### Anomaly Detection Techniques
+### Skills
 
-- **Isolation Forest:** Isolates anomalies based on feature selection.
-- **One-Class SVM:** Learns a decision function for novelty detection.
-- **Local Outlier Factor (LOF):** Measures local density deviation to identify outliers.
+- **Programming Languages**: Proficient in Python for data analysis.
+- **Libraries**: Familiarity with Pandas for data manipulation and analysis.
+- **Data Analysis**: Ability to preprocess and analyze stock market data using statistical methods.
 
-### Model Training and Evaluation
+### Results & Business Recommendations
 
-- Train models and evaluate their performance using precision, recall, and F1-score metrics.
+The results of the anomaly detection and risk assessment are illustrated in the following images:
 
-### Anomaly Visualization
-
-- Highlight detected anomalies on stock data plots.
-
-## Skills
-
-- **Programming Languages:** Proficient in Python for data analysis and machine learning.
-- **Libraries:** Familiarity with NumPy, Pandas, Scikit-learn, and Matplotlib.
-- **Data Analysis:** Ability to preprocess and analyze large datasets.
-- **Machine Learning:** Understanding of anomaly detection algorithms and their applications.
-
-## Results & Business Recommendations
-
-### Anomaly Detection Results
+#### Anomaly Detection Results
 
 *Insert a brief description of the results and what they indicate about the stock market trends.*
 
-### Model Performance Metrics
+#### Risk Assessment Metrics
 
-*Discuss the performance metrics of the models and their implications for investors.*
+*Discuss the risk scores calculated and their implications for investors.*
 
 Based on the findings, it is recommended that investors:
 
 - Monitor identified anomalies closely to assess their impact on investment strategies.
-- Consider integrating anomaly detection tools into their trading systems for real-time analysis.
+- Consider using Z-score analysis as a straightforward method for real-time anomaly detection.
+- Conduct further research on the causes of detected anomalies to enhance understanding and predictive capabilities.
+
+### Next Steps
+
+1. **Further Analysis**: Explore additional statistical methods for anomaly detection beyond Z-scores.
+
+2. **Real-Time Implementation**: Develop a system for real-time anomaly detection using the Alpha Vantage API.
+
+3. **User Training**: Create training materials for users to effectively interpret and act upon anomaly detection results.
+
+4. **Expand Data Sources**: Consider incorporating alternative data sources (e.g., news sentiment analysis) to enrich the anomaly detection framework.
+make this 
 - Conduct further research on the causes of detected anomalies to enhance understanding and predictive capabilities.
 
 ## Next Steps
