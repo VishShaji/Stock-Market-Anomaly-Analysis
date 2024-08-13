@@ -21,24 +21,31 @@ The project employs the following steps:
 3. **Anomaly Detection**:
    - Identify anomalies based on the calculated Z-scores for both closing prices and volumes.
 
-4. **Risk Assessment**:
-   - Compute risk scores using the following formulas:
-     - **Adjusted Close Risk**:
-       $$
-       \text{adj\_close\_risk} = \text{anomalies\_adj\_close.groupby('Ticker')['Z-score'].apply(lambda x: abs(x).mean())}
-       $$
-     - **Volume Risk**:
-       $$
-       \text{volume\_risk} = \text{anomalies\_volume.groupby('Ticker')['Z-score'].apply(lambda x: abs(x).mean())}
-       $$
-     - **Total Risk**:
-       $$
-       \text{total\_risk} = \text{adj\_close\_risk} + \text{volume\_risk}
-       $$
-     - **Risk Rating**:
-       $$
-       \text{risk\_rating} = \frac{\text{total\_risk} - \text{total\_risk.min()}}{\text{total\_risk.max()} - \text{total\_risk.min()}}
-       $$
+4. ## Risk Assessment
+
+- **Adjusted Close Risk**:
+
+  $$
+  \text{adj\_close\_risk} = \text{anomalies\_adj\_close.groupby('Ticker')['Z-score'].apply(lambda x: abs(x).mean())}
+  $$
+
+- **Volume Risk**:
+
+  $$
+  \text{volume\_risk} = \text{anomalies\_volume.groupby('Ticker')['Z-score'].apply(lambda x: abs(x).mean())}
+  $$
+
+- **Total Risk**:
+
+  $$
+  \text{total\_risk} = \text{adj\_close\_risk} + \text{volume\_risk}
+  $$
+
+- **Risk Rating**:
+
+  $$
+  \text{risk\_rating} = \frac{\text{total\_risk} - \text{total\_risk.min()}}{\text{total\_risk.max()} - \text{total\_risk.min()}}
+  $$
 
 ## Skills
 
