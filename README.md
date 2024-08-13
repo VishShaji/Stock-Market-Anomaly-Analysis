@@ -23,31 +23,29 @@ The project employs the following steps:
 
 4. ## Risk Assessment
 
-- **Adjusted Close Risk**:
+Compute risk scores using Python code that aggregates the Z-scores for anomalies:
 
-  $$
-  \text{adj\_close\_risk} = \text{anomalies\_adj\_close.groupby('Ticker')['Z-score'].apply(\lambda x: \text{abs}(x).\text{mean}())}
-  $$
+- **Adjusted Close Risk**: This is calculated by grouping the identified anomalies in adjusted closing prices by ticker. For each ticker, the absolute mean of the Z-scores is computed, giving an indication of the average risk associated with price anomalies.
 
-- **Volume Risk**:
+  ```python
+  adj_close_risk = anomalies_adj_close.groupby('Ticker')['Z-score'].apply(lambda x: abs(x).mean())
+  ```
+  
+- **Volume Risk**: Similarly, this is calculated by grouping the identified anomalies in trading volumes by ticker and computing the absolute mean of the Z-scores.
 
-  $$
-  \text{volume\_risk} = \text{anomalies\_volume.groupby('Ticker')['Z-score'].apply(\lambda x: \text{abs}(x).\text{mean}())}
-  $$
-
-- **Total Risk**:
-
-  $$
-  \text{total\_risk} = \text{adj\_close\_risk} + \text{volume\_risk}
-  $$
-
-- **Risk Rating**:
-
-  $$
-  \text{risk\_rating} = \frac{\text{total\_risk} - \text{total\_risk.min()}}{\text{total\_risk.max()} - \text{total\_risk.min()}}
-  $$
-
-
+   ```python
+   volume_risk = anomalies_volume.groupby('Ticker')['Z-score'].apply(lambda x: abs(x).mean())
+   ```
+   
+- **Total Risk**: The total risk is then calculated by summing the adjusted close risk and volume risk for each ticker.
+    ```python
+      total_risk = adj_close_risk + volume_risk
+    ```
+    
+- **Risk Rating**: Finally, a risk rating is computed to normalize the total risk values, allowing for easy comparison across tickers. This involves scaling the total risk to a range between 0 and 1.
+   ```python
+   risk_rating = (total_risk - total_risk.min()) / (total_risk.max() - total_risk.min())
+   ```
 
 
 ## Skills
