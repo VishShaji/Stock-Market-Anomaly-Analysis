@@ -47,11 +47,6 @@ The project employs the following steps:
   \text{risk\_rating} = \frac{\text{total\_risk} - \text{total\_risk.min()}}{\text{total\_risk.max()} - \text{total\_risk.min()}}
   $$
 
-- **Risk Rating**:
-
-  $$
-  \text{risk\_rating} = \frac{\text{total\_risk} - \text{total\_risk.min()}}{\text{total\_risk.max()} - \text{total\_risk.min()}}
-  $$
 
 ## Skills
 
