@@ -15,11 +15,12 @@ The project employs the following steps:
 1. ### **Data Retrieval**:
    - Use the Alpha Vantage API to obtain stock market data, including closing prices and trading volumes.
   
-   ![10 Rows of Data]((https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/data.head.png))
-   ![Alt text](URL_or_Path_to_Image)
+   ![10 Rows of Data]((https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/data_head.png))
+   
    - By plotting the adjusted close prices over time and trading volume over time, we can identify the general trend.
    
    ![Adjusted Close Prices](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/close.png)
+   
    ![Trading Volume](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/volume.png)
 
 3. ### **Data Preprocessing**:
@@ -31,9 +32,13 @@ The project employs the following steps:
    - Identify anomalies based on the calculated Z-scores for both closing prices and volumes.
 
    ![Apple](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/AAPL.png)
+   
    ![Netflix](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/NFLX.png)
+   
    ![Microsoft](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/MSFT.png)
+   
    ![Google](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/GOOG.png)
+   
    ![Tesla](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/TSLA.png)
 
 6. ### **Risk Assessment**
@@ -73,11 +78,18 @@ Compute risk scores using Python code that aggregates the Z-scores for anomalies
 ### Anomaly Detection Results
 
    ![Correlation Close Price](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/corr_close.png)
+   
    ![Correlation Volume](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/corr_volume.png)
 
 ### Risk Assessment Metrics
 
    ![Risk Rating](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/risk_score.png)
+
+- **AAPL**: Has a risk rating of approximately 1. It indicates that Apple is the most risky among these stocks, with the most frequent and largest anomalies detected.
+- **GOOG**: With a risk rating of around 0.402, GOOG appears to be less risky compared to AAPL but still moderately risky. It indicates fewer or less significant anomalies in its trading data.
+- **MSFT**: The NaN value suggests that it did not have detectable anomalies in the period analyzed.
+- **NFLX**: The NaN value suggests that it did not have detectable anomalies in the period analyzed.
+- **TSLA**: Shows a risk rating of 0.00, indicating the least risk among the stocks listed. It suggests that Tesla had the fewest and smallest anomalies in its price and volume data.
 
 Based on the findings, it is recommended that investors:
 
