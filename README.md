@@ -12,16 +12,16 @@ In the volatile stock market, anomalies can signal significant events such as ma
 
 The project employs the following steps:
 
-1. **Data Retrieval**:
+1. ### **Data Retrieval**:
    - Use the Alpha Vantage API to obtain stock market data, including closing prices and trading volumes.
 
-2. **Data Preprocessing**:
+2. ### **Data Preprocessing**:
    - Calculate Z-scores for the closing prices and trading volumes to identify anomalies.
 
-3. **Anomaly Detection**:
+3. ### **Anomaly Detection**:
    - Identify anomalies based on the calculated Z-scores for both closing prices and volumes.
 
-4. ## Risk Assessment
+4. ### **Risk Assessment**
 
 Compute risk scores using Python code that aggregates the Z-scores for anomalies:
 
