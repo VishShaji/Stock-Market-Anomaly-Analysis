@@ -15,7 +15,7 @@ The project employs the following steps:
 1. ### **Data Retrieval**:
    - Use the Alpha Vantage API to obtain stock market data, including closing prices and trading volumes.
   
-   ![10 Rows of Data]((https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/data_head.png))
+   ![10 Rows of Data](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/data_head.png)
    
    - By plotting the adjusted close prices over time and trading volume over time, we can identify the general trend.
    
