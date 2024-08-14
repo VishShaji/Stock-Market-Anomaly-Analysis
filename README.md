@@ -6,7 +6,7 @@ This project focuses on detecting anomalies in stock market data using Z-scores 
 
 ## Business Problem
 
-In the volatile stock market, anomalies can signal significant events such as market manipulation, sudden price changes, or emerging trends. Identifying these anomalies in real-time can help investors make informed decisions, manage risks, and capitalize on opportunities. Traditional analysis methods may not effectively capture these anomalies, necessitating a more straightforward statistical approach.
+In the volatile stock market, anomalies can signal significant events such as market manipulation, sudden price changes, or emerging trends. Identifying these anomalies in real-time can help investors make informed decisions, manage risks, and capitalize on opportunities. Traditional analysis methods may not effectively capture these anomalies, necessitating a more straightforward statistical approach. The Stocks used are Apple, Microsoft, Netflix, Google, and Tesla.
 
 ## Methodology
 
@@ -14,14 +14,29 @@ The project employs the following steps:
 
 1. ### **Data Retrieval**:
    - Use the Alpha Vantage API to obtain stock market data, including closing prices and trading volumes.
+  
+   ![10 Rows of Data]((https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/data.head.png))
+   ![Alt text](URL_or_Path_to_Image)
+   - By plotting the adjusted close prices over time and trading volume over time, we can identify the general trend.
+   
+   ![Adjusted Close Prices](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/close.png)
+   ![Trading Volume](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/volume.png)
 
-2. ### **Data Preprocessing**:
+3. ### **Data Preprocessing**:
    - Calculate Z-scores for the closing prices and trading volumes to identify anomalies.
 
-3. ### **Anomaly Detection**:
+   ![Z_score](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/z_score.png)
+
+4. ### **Anomaly Detection**:
    - Identify anomalies based on the calculated Z-scores for both closing prices and volumes.
 
-4. ### **Risk Assessment**
+   ![Apple](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/AAPL.png)
+   ![Netflix](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/NFLX.png)
+   ![Microsoft](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/MSFT.png)
+   ![Google](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/GOOG.png)
+   ![Tesla](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/TSLA.png)
+
+6. ### **Risk Assessment**
 
 Compute risk scores using Python code that aggregates the Z-scores for anomalies:
 
@@ -47,7 +62,6 @@ Compute risk scores using Python code that aggregates the Z-scores for anomalies
    risk_rating = (total_risk - total_risk.min()) / (total_risk.max() - total_risk.min())
    ```
 
-
 ## Skills
 
 - **Programming Languages**: Proficient in Python for data analysis.
@@ -58,11 +72,12 @@ Compute risk scores using Python code that aggregates the Z-scores for anomalies
 
 ### Anomaly Detection Results
 
-*Insert a brief description of the results and what they indicate about the stock market trends.*
+   ![Correlation Close Price](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/corr_close.png)
+   ![Correlation Volume](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/corr_volume.png)
 
 ### Risk Assessment Metrics
 
-*Discuss the risk scores calculated and their implications for investors.*
+   ![Risk Rating](https://github.com/VishShaji/Stock-Market-Anomaly-Detection/blob/main/media/risk_score.png)
 
 Based on the findings, it is recommended that investors:
 
